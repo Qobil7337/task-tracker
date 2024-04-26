@@ -38,6 +38,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
 import {MatDialogClose} from "@angular/material/dialog";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {MatDialogClose} from "@angular/material/dialog";
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogClose
+    MatDialogClose,
+    MatProgressSpinner
   ],
   providers: [
     provideAnimationsAsync()

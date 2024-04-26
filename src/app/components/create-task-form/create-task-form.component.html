@@ -52,7 +52,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="saveForm()" [disabled]="!taskForm.valid" mat-raised-button color="primary">Save</button>
+      <button (click)="saveForm()" [disabled]="!taskForm.valid" mat-raised-button color="primary" style="padding: 20px">Save <mat-icon><mat-spinner diameter="18"></mat-spinner></mat-icon></button>
     </mat-card-actions>
   </mat-card>
 </form>
