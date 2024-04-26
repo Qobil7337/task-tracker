@@ -14,7 +14,7 @@ export class CreateTaskFormComponent {
     name:[''],
     priority:[''],
     status:[''],
-    performers:[[]],
+    performers:[''],
     deadline:[''],
   });
 
