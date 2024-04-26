@@ -1,0 +1,45 @@
+<form [formGroup]="profileForm">
+  <mat-card style="width: 500px">
+    <mat-card-header class="mb-4">
+      <mat-card-title>New Task</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+          <mat-form-field class="w-full">
+            <input formControlName="title" matInput placeholder="Title">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input  formControlName="name" matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input  formControlName="priority" matInput placeholder="Priority">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input  formControlName="status" matInput placeholder="Status">
+          </mat-form-field>
+        </div>
+      <div>
+        <mat-form-field class="w-full">
+          <input  formControlName="performers" matInput placeholder="Performers">
+        </mat-form-field>
+      </div>
+        <div>
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Specify deadline</mat-label>
+            <input  formControlName="deadline" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="saveForm()" mat-raised-button color="primary">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

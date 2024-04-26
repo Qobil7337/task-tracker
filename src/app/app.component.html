@@ -7,22 +7,21 @@
   <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
       <mat-list-item>
-        <button routerLink="card" mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+        <button routerLink="/" mat-button><mat-icon>home</mat-icon> Home</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="" mat-button><mat-icon>home</mat-icon> Home</button>
+        <button routerLink="/tasks" mat-button><mat-icon>checklist</mat-icon> View all tasks</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="slider" mat-button><mat-icon>explore</mat-icon> Slider</button>
+        <button routerLink="/create" mat-button><mat-icon>add circle</mat-icon> Create a task</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="table" mat-button><mat-icon>table</mat-icon> Table</button>
+        <button routerLink="/completed" mat-button><mat-icon>done</mat-icon> Completed tasks</button>
       </mat-list-item>
-
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="flex items-center justify-center h-screen">
+    <div class="flex  justify-center h-screen">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
