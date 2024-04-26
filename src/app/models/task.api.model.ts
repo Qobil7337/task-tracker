@@ -6,6 +6,6 @@ export interface TaskApiModel {
   name: string;
   priority: Priority;
   status: StatusEnum;
-  performers: string;
+  performer: string;
   deadline: Date;
 }
