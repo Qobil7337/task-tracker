@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Priority} from "../../enums/priority.enum";
-import {StatusEnum} from "../../enums/status.enum";
+import {Status} from "../../enums/status.enum";
 
 @Component({
   selector: 'app-create-task-form',
@@ -10,23 +10,21 @@ import {StatusEnum} from "../../enums/status.enum";
 })
 export class CreateTaskFormComponent {
   priorities = Object.values(Priority); // Get array of enum values
-  statuses = Object.values(StatusEnum); // Get array of enum values
+  statuses = Object.values(Status); // Get array of enum values
   constructor(private formBuilder:FormBuilder){}
 
-  profileForm = this.formBuilder.group({
-    title:[''],
-    name:[''],
-    priority:[''],
-    status:[''],
-    performer:[''],
-    deadline:[''],
+  taskForm = this.formBuilder.group({
+    title:['', [Validators.required]],
+    name:['', [Validators.required]],
+    priority:['', [Validators.required]],
+    status:['', [Validators.required]],
+    performer:['', [Validators.required]],
+    deadline:['', [Validators.required]],
   });
 
   saveForm(){
-    console.log('Form data is ', this.profileForm.value);
+    console.log('Form data is ', this.taskForm.value);
     console.log(this.priorities)
     console.log(this.statuses)
   }
-
-  protected readonly Priority = Priority;
 }

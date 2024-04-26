@@ -37,6 +37,7 @@ import {
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
+import {MatDialogClose} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks
     MatCardModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogClose
   ],
   providers: [
     provideAnimationsAsync()

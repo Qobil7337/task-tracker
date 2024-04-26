@@ -1,11 +1,11 @@
 import {Priority} from "../enums/priority.enum";
-import {StatusEnum} from "../enums/status.enum";
+import {Status} from "../enums/status.enum";
 
 export interface TaskApiModel {
   title: string;
   name: string;
   priority: Priority;
-  status: StatusEnum;
+  status: Status;
   performer: string;
   deadline: Date;
 }
