@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Priority} from "../../enums/priority.enum";
 import {Status} from "../../enums/status.enum";
+import {TaskApiService} from "../../services/api/task.api.service";
 
 @Component({
   selector: 'app-create-task-form',
@@ -11,7 +12,8 @@ import {Status} from "../../enums/status.enum";
 export class CreateTaskFormComponent {
   priorities = Object.values(Priority); // Get array of enum values
   statuses = Object.values(Status); // Get array of enum values
-  constructor(private formBuilder:FormBuilder){}
+  constructor(private formBuilder:FormBuilder,
+              private taskService: TaskApiService){}
 
   taskForm = this.formBuilder.group({
     title:['', [Validators.required]],
