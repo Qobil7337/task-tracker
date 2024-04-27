@@ -4,6 +4,8 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskApiService} from "../../services/api/task.api.service";
+import {CreateTaskFormComponent} from "../../components/create-task-form/create-task-form.component";
+import {EditTaskFormComponent} from "../../components/edit-task-form/edit-task-form.component";
 
 
 @Component({
@@ -68,16 +70,16 @@ export class TasksComponent implements OnInit{
   }
 
   openEditForm(data: any) {
-    // const dialogRef = this._dialog.open(EmpAddEditComponent, {
-    //   data,
-    // });
-    //
-    // dialogRef.afterClosed().subscribe({
-    //   next: (val) => {
-    //     if (val) {
-    //       this.getTasks();
-    //     }
-    //   },
-    // });
+    const dialogRef = this._dialog.open(EditTaskFormComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getTasks();
+        }
+      },
+    });
   }
 }

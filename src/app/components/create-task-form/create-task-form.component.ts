@@ -16,8 +16,8 @@ export class CreateTaskFormComponent implements OnInit {
   priorities = Object.values(Priority); // Get array of enum values
   statuses = Object.values(Status);
   constructor(private formBuilder:FormBuilder,
-              private _taskService: TaskApiService){}
-
+              private _taskService: TaskApiService,
+              ){}
   ngOnInit() {
     this.taskForm = this.formBuilder.group({
       title:['', [Validators.required]],

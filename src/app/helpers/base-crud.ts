@@ -33,12 +33,20 @@ export class BaseCrud<T> {
 
   update(key: string, data: T): Observable<T> {
     try {
-      if (localStorage.getItem(key)) {
-        localStorage.setItem(key, JSON.stringify(data));
-        return of(data).pipe(delay(1000));
-      } else {
+      const storedDataString = localStorage.getItem(key);
+      if (!storedDataString) {
         return throwError(() => new Error(`Item with key '${key}' not found in local storage`));
       }
+      const storedData: T[] = JSON.parse(storedDataString);
+      // @ts-ignore
+      const indexToUpdate = storedData.findIndex(item => item.id === data.id);
+      if (indexToUpdate === -1) {
+        // @ts-ignore
+        return throwError(() => new Error(`Item with ID '${data.id}' not found in local storage`));
+      }
+      storedData[indexToUpdate] = { ...storedData[indexToUpdate], ...data };
+      localStorage.setItem(key, JSON.stringify(storedData));
+      return of(storedData[indexToUpdate]).pipe(delay(1000));
     } catch (error) {
       return throwError(() => error);
     }
@@ -59,7 +67,7 @@ export class BaseCrud<T> {
       }
       storedData.splice(taskIndex, 1);
       localStorage.setItem(key, JSON.stringify(storedData));
-      return of(undefined).pipe(delay(1000));
+      return of(undefined);
     } catch (error) {
       return throwError(() => error);
     }

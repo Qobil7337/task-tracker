@@ -37,7 +37,14 @@ import {
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
-import {MatDialogClose} from "@angular/material/dialog";
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogModule,
+  MatDialogRef, MatDialogTitle
+} from "@angular/material/dialog";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {
   MatCell,
@@ -50,6 +57,7 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
+import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +68,7 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     CreateTaskFormComponent,
     CreateTaskComponent,
     CompletedTasksComponent,
+    EditTaskFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,9 +127,17 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     MatHeaderRowDef,
     MatRowDef,
     MatSortHeader,
+    MatDialogModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
