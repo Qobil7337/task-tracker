@@ -16,7 +16,7 @@ export class CreateTaskFormComponent implements OnInit {
   priorities = Object.values(Priority); // Get array of enum values
   statuses = Object.values(Status);
   constructor(private formBuilder:FormBuilder,
-              private taskService: TaskApiService){}
+              private _taskService: TaskApiService){}
 
   ngOnInit() {
     this.taskForm = this.formBuilder.group({
@@ -32,7 +32,7 @@ export class CreateTaskFormComponent implements OnInit {
   onSubmit() {
     this.isCreateButtonLoading = true
     const taskData = { ...this.taskForm.value, id: this.generateRandomId() };
-    this.taskService.create('tasks', taskData).subscribe({
+    this._taskService.create('tasks', taskData).subscribe({
       next: value => {
         this.formGroupDirective.resetForm()
         this.isCreateButtonLoading = false

@@ -1,4 +1,5 @@
 import {delay, Observable, of, throwError} from "rxjs";
+import {TaskApiModel} from "../models/task.api.model";
 
 export class BaseCrud<T> {
   create(key: string, data: T): Observable<T> {
@@ -44,9 +45,20 @@ export class BaseCrud<T> {
   }
 
 
-  delete(key: string): Observable<void> {
+  delete(key: string, id: number): Observable<void> {
     try {
-      localStorage.removeItem(key);
+      const storedDataString = localStorage.getItem(key);
+      if (!storedDataString) {
+        throw new Error(`No data found for key '${key}' in local storage`);
+      }
+      const storedData: T[] = JSON.parse(storedDataString);
+      // @ts-ignore
+      const taskIndex = storedData.findIndex((task) => task.id === id);
+      if (taskIndex === -1) {
+        throw new Error(`Task with ID '${id}' not found in local storage`);
+      }
+      storedData.splice(taskIndex, 1);
+      localStorage.setItem(key, JSON.stringify(storedData));
       return of(undefined).pipe(delay(1000));
     } catch (error) {
       return throwError(() => error);

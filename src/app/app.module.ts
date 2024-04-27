@@ -39,6 +39,17 @@ import {MatSelectModule} from "@angular/material/select";
 import { CompletedTasksComponent } from './pages/completed-tasks/completed-tasks.component';
 import {MatDialogClose} from "@angular/material/dialog";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -92,7 +103,21 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogClose,
-    MatProgressSpinner
+    MatProgressSpinner,
+    MatCellDef,
+    MatHeaderCell,
+    MatCell,
+    MatColumnDef,
+    MatTable,
+    MatHeaderCellDef,
+    MatPaginator,
+    MatSort,
+    MatHeaderRow,
+    MatRow,
+    MatNoDataRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatSortHeader,
   ],
   providers: [
     provideAnimationsAsync()
