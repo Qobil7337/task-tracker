@@ -3,8 +3,17 @@ import {delay, Observable, of, throwError} from "rxjs";
 export class BaseCrud<T> {
   create(key: string, data: T): Observable<T> {
     try {
-      localStorage.setItem(key, JSON.stringify(data));
-      return of(data).pipe(delay(1000)); // 1-second delay to mock server
+      let storedData: T[] = [];
+      const storedItem = localStorage.getItem(key);
+
+      if (storedItem) {
+        storedData = JSON.parse(storedItem) as T[];
+      }
+
+      storedData.push(data);
+      localStorage.setItem(key, JSON.stringify(storedData));
+
+      return of(data).pipe(delay(1000)); // Mock server delay
     } catch (error) {
       return throwError(() => error);
     }

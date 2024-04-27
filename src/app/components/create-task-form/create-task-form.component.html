@@ -1,4 +1,4 @@
-<form [formGroup]="taskForm">
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
   <mat-card style="width: 500px">
     <mat-card-header class="mb-4">
       <mat-card-title>New Task</mat-card-title>
@@ -52,7 +52,12 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="saveForm()" [disabled]="!taskForm.valid" mat-raised-button color="primary" style="padding: 20px">Save <mat-icon><mat-spinner diameter="18"></mat-spinner></mat-icon></button>
+      <button [disabled]="!taskForm.valid || isCreateButtonLoading" mat-raised-button color="primary" style="padding: 20px">
+        Save
+        <mat-icon *ngIf="isCreateButtonLoading">
+          <mat-spinner diameter="18"></mat-spinner>
+        </mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>
