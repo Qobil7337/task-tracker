@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -6,6 +6,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {TaskApiService} from "../../services/api/task.api.service";
 import {CreateTaskFormComponent} from "../../components/create-task-form/create-task-form.component";
 import {EditTaskFormComponent} from "../../components/edit-task-form/edit-task-form.component";
+import {Subscription} from "rxjs";
+import {TaskApiModel} from "../../models/task.api.model";
 
 
 @Component({
@@ -13,7 +15,8 @@ import {EditTaskFormComponent} from "../../components/edit-task-form/edit-task-f
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss',
 })
-export class TasksComponent implements OnInit{
+export class TasksComponent implements OnInit, OnDestroy{
+  private taskUpdatedSubscription: Subscription;
   displayedColumns: string[] = [
     'id',
     'title',
@@ -35,14 +38,22 @@ export class TasksComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.taskUpdatedSubscription = this._taskService.taskUpdated.subscribe(() => {
+      this.getTasks()
+    })
     this.getTasks();
+  }
+
+  ngOnDestroy() {
+    if (this.taskUpdatedSubscription) {
+      this.taskUpdatedSubscription.unsubscribe();
+    }
   }
 
 
   getTasks() {
     this._taskService.read('tasks').subscribe({
       next: (res) => {
-        console.log(res)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -81,5 +92,9 @@ export class TasksComponent implements OnInit{
         }
       },
     });
+  }
+
+  onSingleTaskClick(task: TaskApiModel) {
+    console.log(task)
   }
 }
