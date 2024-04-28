@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'tasks/:id', component: TaskDetailComponent},
   { path: 'create', component: CreateTaskComponent },
-  { path: 'completed', component: CompletedTasksComponent },
 ];
 
 @NgModule({

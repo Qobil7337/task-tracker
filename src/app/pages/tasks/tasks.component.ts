@@ -73,7 +73,8 @@ export class TasksComponent implements OnInit, OnDestroy{
     }
   }
 
-  deleteTask(id: number) {
+  deleteTask(event: MouseEvent, id: number) {
+    event.stopPropagation();
     this._taskService.delete('tasks', id).subscribe({
       next: (res) => {
         this.getTasks();
@@ -82,7 +83,8 @@ export class TasksComponent implements OnInit, OnDestroy{
     });
   }
 
-  openEditForm(data: any) {
+  openEditForm(event: MouseEvent, data: any) {
+    event.stopPropagation();
     const dialogRef = this._dialog.open(EditTaskFormComponent, {
       data,
     });
