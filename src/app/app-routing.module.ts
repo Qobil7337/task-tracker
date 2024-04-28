@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
 import {TasksComponent} from "./pages/tasks/tasks.component";
 import {CreateTaskComponent} from "./pages/create-task/create-task.component";
-import {CompletedTasksComponent} from "./pages/completed-tasks/completed-tasks.component";
 import {TaskDetailComponent} from "./components/task-detail/task-detail.component";
 
 const routes: Routes = [
