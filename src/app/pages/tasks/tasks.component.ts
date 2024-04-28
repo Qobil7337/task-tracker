@@ -8,6 +8,7 @@ import {CreateTaskFormComponent} from "../../components/create-task-form/create-
 import {EditTaskFormComponent} from "../../components/edit-task-form/edit-task-form.component";
 import {Subscription} from "rxjs";
 import {TaskApiModel} from "../../models/task.api.model";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -35,6 +36,7 @@ export class TasksComponent implements OnInit, OnDestroy{
   constructor(
     private _dialog: MatDialog,
     private _taskService: TaskApiService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -95,6 +97,7 @@ export class TasksComponent implements OnInit, OnDestroy{
   }
 
   onSingleTaskClick(task: TaskApiModel) {
-    console.log(task)
+    const {id} = task
+    this.router.navigate(['/tasks', id], )
   }
 }

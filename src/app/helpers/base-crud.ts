@@ -1,4 +1,4 @@
-import {delay, Observable, of, throwError} from "rxjs";
+import {catchError, delay, map, Observable, of, throwError} from "rxjs";
 import {TaskApiModel} from "../models/task.api.model";
 
 export class BaseCrud<T> {
@@ -28,6 +28,19 @@ export class BaseCrud<T> {
     } catch (error) {
       return throwError(() => error);
     }
+  }
+
+  getById(key: string, id: number): Observable<T> {
+    return this.read(key).pipe(
+      map((items: T[]) => {
+        const foundItem = items.find((item: T) => (item as any).id === id);
+        if (!foundItem) {
+          throw new Error(`Item with id ${id} not found`);
+        }
+        return foundItem;
+      }),
+      catchError((error) => throwError(() => error))
+    );
   }
 
 

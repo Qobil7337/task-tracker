@@ -13,7 +13,6 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatBadge} from "@angular/material/badge";
 import { HomeComponent } from './components/home/home.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { TaskComponent } from './components/task/task.component';
 import { CreateTaskFormComponent } from './components/create-task-form/create-task-form.component';
 import { CreateTaskComponent } from './pages/create-task/create-task.component';
 import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/radio";
@@ -58,17 +57,18 @@ import {
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TasksComponent,
-    TaskComponent,
     CreateTaskFormComponent,
     CreateTaskComponent,
     CompletedTasksComponent,
     EditTaskFormComponent,
+    TaskDetailComponent,
   ],
   imports: [
     BrowserModule,
